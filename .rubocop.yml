@@ -1,0 +1,122 @@
+inherit_mode:
+  merge:
+    - Exclude
+
+plugins:
+  - rubocop-capybara
+  - rubocop-erb
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-thread_safety
+
+AllCops:
+  NewCops: disable
+  DisplayStyleGuide: true
+  Exclude:
+    - "bin/**/*"
+    - "data/**/*"
+    - "db/**/*schema.rb"
+    - "db/**/*.sql"
+    - "storage/**/*"
+    - "tmp/**/*"
+    - "coverage/**/*"
+    - "log/**/*"
+# Overwrite or add rules to create your own house style
+
+# dumped from :rubocop-rails-omakase/rubocop.yml
+
+# Method definitions after `private` or `protected` isolated calls need one
+# extra level of indentation.
+#
+# We break this rule in context, though, e.g. for private-only concerns,
+# so we leave it disabled.
+# Layout/IndentationConsistency:
+#   Enabled: false
+#   EnforcedStyle: indented_internal_methods
+
+# Doesn't behave properly with private-only concerns, so it's disabled.
+# Layout/IndentationWidth:
+#   Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: true
+
+Layout/EmptyLineAfterMultilineCondition:
+  Enabled: true
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+# Use `[ a, [ b, c ] ]` not `[a, [b, c]]`
+# Use `[]` not `[ ]`
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: true
+  EnforcedStyle: space
+  EnforcedStyleForEmptyBrackets: no_space
+
+# Use `foo { bar }` not `foo {bar}`.
+# Use `foo {}` not `foo { }`.
+Layout/SpaceInsideBlockBraces:
+  Enabled: true
+  EnforcedStyle: space
+  EnforcedStyleForEmptyBraces: no_space
+
+# Use `{ a: 1 }` not `{a:1}`.
+# Use `{}` not `{  }`.
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+  EnforcedStyle: space
+  EnforcedStyleForEmptyBraces: no_space
+
+# Requiring a space is not yet supported as of 0.59.2
+# Use `%w[ foo ]` not `%w[foo]`
+Layout/SpaceInsidePercentLiteralDelimiters:
+  Enabled: true
+
+# Prefer assert_not over assert !
+Rails/AssertNot:
+  Include:
+    - "test/**/*"
+
+# Prefer assert_not_x over refute_x
+Rails/RefuteMethods:
+  Include:
+    - "test/**/*"
+
+# We generally prefer &&/|| but like low-precedence and/or in context
+Style/AndOr:
+  Enabled: true
+
+# Defining a method with parameters needs parentheses.
+Style/MethodDefParentheses:
+  Enabled: true
+
+# Use quotes for string literals when they are enough.
+Style/RedundantPercentQ:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: true
+  AllowMultipleReturnValues: true
+
+Style/Semicolon:
+  Enabled: true
+  AllowAsExpressionSeparator: true
+
+# # Use `"foo"` not `'foo'` unless escaping is required
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+  ConsistentQuotesInMultiline: true
+  Include:
+    - "app/**/*"
+    - "config/**/*"
+    - "lib/**/*"
+    - "test/**/*"
+    - "Gemfile"
+
+Layout/ExtraSpacing:
+  Enabled: true
+  AllowForAlignment: true
+  AllowBeforeTrailingComments: true
+  ForceEqualSignAlignment: true

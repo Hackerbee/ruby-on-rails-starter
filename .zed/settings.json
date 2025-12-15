@@ -1,0 +1,134 @@
+{
+  "format_on_save": "on",
+  "tab_size": 2,
+  "preferred_line_length": 120,
+  "soft_wrap": "preferred_line_length",
+  "file_types": {
+    "Ruby": [
+      "*.rb",
+      "*.rake",
+      "Rakefile",
+      "Gemfile",
+      "*.gemspec",
+      "Guardfile",
+      "Capfile",
+      "*.ru",
+      "*.thor",
+      "*.jbuilder",
+      "*.rbuild",
+      ".irbrc",
+      ".pryrc"
+    ]
+  },
+  "languages": {
+    "HTML": {
+      "language_servers": ["herb", "..."]
+    },
+    "CSS": {
+      "language_servers": ["tailwindcss-language-server", "..."]
+    },
+    "Ruby": {
+      "language_servers": ["ruby-lsp", "!solargraph", "!sorbet", "!steep", "..."]
+    },
+    "ERB": {
+      "language_servers": ["ruby-lsp", "..."]
+    },
+    // Enable herb and ruby-lsp for *.html.erb files
+    "HTML+ERB": {
+      "language_servers": ["herb", "ruby-lsp"]
+    },
+    // Enable ruby-lsp for *.js.erb files
+    "JS+ERB": {
+      "language_servers": ["ruby-lsp", "..."]
+    },
+    // Enable ruby-lsp for *.yaml.erb files
+    "YAML+ERB": {
+      "language_servers": ["ruby-lsp", "..."]
+    }
+  },
+  "lsp": {
+    "herb": {
+      "enable_lsp_tasks": true,
+      "initialization_options": {
+        "settings": {
+          "tab_size": 2,
+          "preferred_line_length": 120,
+          "soft_wrap": "preferred_line_length"
+        }
+      }
+    },
+    "solargraph": {
+      "initialization_options": {
+        "diagnostics": false,
+        "formatting": false
+      }
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "includeLanguages": {
+          "html+erb": "html",
+          "ruby": "html"
+        },
+        "experimental": {
+          "classRegex": ["\\bclass:\\s*['\"]([^'\"]*)['\"]"]
+        }
+      }
+    },
+    "rubocop": {
+      "initialization_options": {
+        "safeAutocorrect": true,
+        "layoutMode": true,
+        "lintMode": true
+      }
+    },
+    "ruby-lsp": {
+      "enable_lsp_tasks": true,
+      "initialization_options": {
+        "enabledFeatures": {
+          "codeActions": true,
+          "codeLens": true,
+          "completion": true,
+          "debugging": true,
+          "definition": true,
+          "diagnostics": true,
+          "documentHighlights": true,
+          "documentLink": true,
+          "documentSymbols": true,
+          "foldingRanges": true,
+          "formatting": true,
+          "hover": true,
+          "inlayHint": true,
+          "onTypeFormatting": false,
+          "selectionRanges": true,
+          "semanticHighlighting": true,
+          "signatureHelp": true,
+          "typeHierarchy": true,
+          "workspaceSymbol": true
+        },
+        "featuresConfiguration": {
+          "inlayHint": {
+            "implicitHashValue": true,
+            "implicitRescue": true
+          },
+          "debugging": {
+            "enabled": true,
+            "attachMode": "remote",
+            "remotePort": 38698
+          }
+        },
+        "indexing": {
+          "excludedPatterns": ["path/to/excluded/file.rb"],
+          "includedPatterns": ["path/to/included/file.rb"],
+          "excludedGems": ["gem1"],
+          "excludedMagicComments": ["compiled:true"]
+        },
+        "formatter": "rubocop_internal",
+        "linters": [],
+        "experimentalFeaturesEnabled": false,
+        "rubyVersionManager": {
+          "identifier": "auto"
+        }
+      }
+    }
+  }
+}
