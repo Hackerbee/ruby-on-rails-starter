@@ -61,14 +61,15 @@ Rails.application.configure do
 
   # Change to :null_store to avoid any caching.
   config.cache_store = :solid_cache_store
+  config.solid_cache.connects_to database: { reading: :cache, writing: :cache }
 
   # Change to :disabled to stop using sessions.
   config.session_store :stored_session_store, key: "store_id_dev"
-  config.stored_session.connects_to = { database: { writing: :session } }
+  config.stored_session.connects_to = { database: { reading: :session, writing: :session } }
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
   config.active_job.queue_adapter = :solid_queue
-  config.solid_queue.connects_to  = { database: { writing: :queue } }
+  config.solid_queue.connects_to  = { database: { reading: :queue, writing: :queue } }
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
@@ -83,7 +84,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = http_url_options
 
   # Set mailer delivery to letter_opener for development
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method    = :letter_opener
+  config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

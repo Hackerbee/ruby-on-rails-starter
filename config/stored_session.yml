@@ -1,0 +1,11 @@
+default: &default
+  encrypt: false
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
