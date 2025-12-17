@@ -120,3 +120,7 @@ Layout/ExtraSpacing:
   AllowForAlignment: true
   AllowBeforeTrailingComments: true
   ForceEqualSignAlignment: true
+
+# Temporarily disabled Documentation lint, Uncomment when you are ready
+Style/Documentation:
+  Enabled: false
