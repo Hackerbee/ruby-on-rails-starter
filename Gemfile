@@ -171,7 +171,7 @@ end
 gem "action_policy", "~> 0.7.5" # setup instuctions [https://github.com/palkan/action_policy]
 
 # Admin panel
-gem "avo", "~> 3.23"
+gem "avo", "~> 3.30"
 
 # Protect the API routes via CORS
 gem "rack-cors", "~> 3.0"
